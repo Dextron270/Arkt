@@ -1,4 +1,4 @@
-class vocab:
+class Vocab:
     def flip():
 
         vocab = [
