@@ -3,8 +3,8 @@ from commands.vocab import Vocab
 
 
 def run(arg):
-    if arg in Vocab.dado():
-        out = rchoice.dado()
+    if arg in Vocab.dice():
+        out = rchoice.dice()
 
     if arg in Vocab.flip():
         out = rchoice.flip()

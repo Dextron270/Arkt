@@ -1,14 +1,15 @@
 import discord
-from options import vocab
+from commands.vocab import Vocab as vocab
 import random
+import Token
+from commands import command
 
 client = discord.Client()
 
 
 def run():
-    token = "NDUxMDgxNDc3MzUxMDE0NDEy.DqlNNA.C8_7wRH9zuGYfDqt34eNid80z1k"
     print("starting...")
-    client.run(token)
+    client.run(Token.get())
 
 
 @client.event
@@ -21,11 +22,8 @@ async def on_message(msg):
     if msg.author == client.user:
         return
 
-    if msg.content.lower() in vocab.flip():
-        await msg.channel.send(random.choice(["cara", "coroa"]))
-
-    if msg.content.lower() in vocab.dado():
-        await msg.channel.send(random.choice(["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"]))
+    a = command.run(msg.content.lower())
+    await msg.channel.send(a)
 
 
 run()
